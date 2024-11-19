@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: express-node-app
+  name: python-app
   namespace: default
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: express-node-app
+      app: python-app
   template:
     metadata:
       labels:
-        app: express-node-app
+        app: python-app
     spec:
       containers:
-      - name: express-node-app
+      - name: python-app
         image: koladev32/express-image
         imagePullPolicy: Always
         ports:
@@ -23,12 +23,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: express-service
+  name: python-service
   namespace: default
 spec:
   type: LoadBalancer
   selector:
-    app: express-node-app
+    app: python-app
   ports:
     - port: 5005
       targetPort: 5005  

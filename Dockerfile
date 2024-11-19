@@ -1,10 +1,10 @@
-FROM node:20-alpine
+FROM python3.11-alpine
 
-WORKDIR /node-app
+WORKDIR /app
 
-COPY serve.js /node-app/
-COPY package.json /node-app/
-COPY restaurant.json /node-app/
+COPY serve.js /app/
+COPY package.json /app/
+COPY restaurant.json /app/
 
 RUN npm install
 
