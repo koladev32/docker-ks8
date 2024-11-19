@@ -8,9 +8,11 @@ with open("restaurant.json") as file:
 # Initialize the Flask application
 app = Flask(__name__)
 
+
 @app.route("/")
 def home():
     return jsonify(data)
+
 
 if __name__ == "__main__":
     app.run(port=5005, debug=True)

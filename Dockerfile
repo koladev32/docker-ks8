@@ -1,11 +1,19 @@
-FROM python3.11-alpine
+# Use the official Python 3.11 image
+FROM python:3.11-alpine
 
+# Set the working directory
 WORKDIR /app
 
-COPY serve.js /app/
-COPY package.json /app/
+# Copy the Python application files into the container
+COPY serve.py /app/
 COPY restaurant.json /app/
+COPY requirements.txt /app/
 
-RUN npm install
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["node", "serve"]
+# Expose the port Flask will run on
+EXPOSE 5005
+
+# Command to run the Flask app
+CMD ["python", "serve.py"]
